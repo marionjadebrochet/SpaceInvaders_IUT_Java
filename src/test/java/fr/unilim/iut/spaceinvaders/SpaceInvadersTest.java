@@ -73,24 +73,40 @@ public class SpaceInvadersTest {
 				+ "...............\n" + "...............\n" + "...............\n" + "...............\n"
 				+ "...............\n" + "........V......\n", spaceinvaders.recupererEspaceJeuDansChaineASCII());
 	}
-	
+
 	@Test
 	public void test_VaisseauImmobile_DeplacerVaisseauVersLaDroite() {
-		
-		spaceinvaders.positionnerUnNouveauVaisseau(14,9);
+
+		spaceinvaders.positionnerUnNouveauVaisseau(14, 9);
 
 		spaceinvaders.deplacerVaisseauVersLaDroite();
-		
-		assertEquals("" + 
-		"...............\n" + 
-		"...............\n" +
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		"..............V\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+
+		assertEquals("" + "...............\n" + "...............\n" + "...............\n" + "...............\n"
+				+ "...............\n" + "...............\n" + "...............\n" + "...............\n"
+				+ "...............\n" + "..............V\n", spaceinvaders.recupererEspaceJeuDansChaineASCII());
+	}
+
+	@Test
+	public void test_VaisseauAvance_DeplacerVaisseauVersLaGauche() {
+
+		spaceinvaders.positionnerUnNouveauVaisseau(7, 9);
+
+		spaceinvaders.deplacerVaisseauVersLaGauche();
+
+		assertEquals("" + "...............\n" + "...............\n" + "...............\n" + "...............\n"
+				+ "...............\n" + "...............\n" + "...............\n" + "...............\n"
+				+ "...............\n" + "......V........\n", spaceinvaders.recupererEspaceJeuDansChaineASCII());
+	}
+
+	@Test
+	public void test_VaisseauImmobile_DeplacerVaisseauVersLaGauche() {
+
+		spaceinvaders.positionnerUnNouveauVaisseau(0, 9);
+
+		spaceinvaders.deplacerVaisseauVersLaGauche();
+
+		assertEquals("" + "...............\n" + "...............\n" + "...............\n" + "...............\n"
+				+ "...............\n" + "...............\n" + "...............\n" + "...............\n"
+				+ "...............\n" + "V..............\n", spaceinvaders.recupererEspaceJeuDansChaineASCII());
 	}
 }
