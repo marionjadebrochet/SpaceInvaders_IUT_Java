@@ -21,6 +21,15 @@ public abstract class Sprite {
 		this.vitesse = vitesse;
 	}
 
+	// GETTERS
+	public int hauteur() {
+		return Constante.VAISSEAU_HAUTEUR;
+	}
+
+	public int longueur() {
+		return Constante.VAISSEAU_LONGUEUR;
+	}
+
 	// METHODES
 
 	public boolean occupeLaPosition(int x, int y) {
