@@ -40,7 +40,6 @@ public class Controleur implements KeyListener {
 		return (aRetourner);
 	}
 
-	
 	// Met a jour les commandes en fonctions des touches appuyees
 	public void keyPressed(KeyEvent e) {
 		// qdzs KEYS
@@ -84,11 +83,13 @@ public class Controleur implements KeyListener {
 			this.commandeEnCours.bas = true;
 			this.commandeARetourner.bas = true;
 			break;
-
+		case KeyEvent.VK_SPACE:
+			this.commandeEnCours.tir = true;
+			this.commandeARetourner.tir = true;
+			break;
 		}
 	}
 
-	
 	// Met a jour les commandes quand le joueur relache une touche
 	public void keyReleased(KeyEvent e) {
 		// qdzs KEYS
@@ -120,12 +121,12 @@ public class Controleur implements KeyListener {
 		case KeyEvent.VK_DOWN:
 			this.commandeEnCours.bas = false;
 			break;
-
+		case KeyEvent.VK_SPACE:
+			this.commandeEnCours.tir = false;
+			break;
 		}
-
 	}
 
-	
 	/**
 	 * ne fait rien
 	 */

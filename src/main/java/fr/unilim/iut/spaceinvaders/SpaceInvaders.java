@@ -26,6 +26,10 @@ public class SpaceInvaders implements Jeu {
 		return this.vaisseau;
 	}
 
+	public Missile recupererMissile() {
+		return this.missile;
+	}
+
 	// METHODES
 	private char recupererMarqueDeLaPosition(int x, int y) {
 		char marque;
@@ -42,7 +46,7 @@ public class SpaceInvaders implements Jeu {
 		return this.aUnMissile() && missile.occupeLaPosition(x, y);
 	}
 
-	private boolean aUnMissile() {
+	boolean aUnMissile() {
 		return missile != null;
 	}
 
@@ -91,7 +95,7 @@ public class SpaceInvaders implements Jeu {
 			throw new DebordementEspaceJeuException(
 					"Le vaisseau déborde de l'espace jeu vers le bas à cause de sa hauteur");
 
-		vaisseau = new Vaisseau(dimension, position,Constante.VAISSEAU_VITESSE);
+		vaisseau = new Vaisseau(dimension, position, Constante.VAISSEAU_VITESSE);
 	}
 
 	/*
@@ -127,6 +131,9 @@ public class SpaceInvaders implements Jeu {
 			deplacerVaisseauVersLaDroite();
 		}
 
+		if (commandeUser.tir && !this.aUnMissile())
+			tirerUnMissile(new Dimension(Constante.MISSILE_LONGUEUR, Constante.MISSILE_HAUTEUR),
+					Constante.MISSILE_VITESSE);
 	}
 
 	public boolean etreFini() {
