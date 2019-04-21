@@ -111,9 +111,6 @@ public class SpaceInvadersTest {
 		} catch (final DebordementEspaceJeuException e) {
 		}	
 	}
-
-	
-	   
 	   
 	    @Test
 	    public void test_VaisseauAvance_DeplacerVaisseauVersLaGauche() {
