@@ -246,11 +246,7 @@ public class SpaceInvadersTest {
 	       ".....VVVVVVV...\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
 	    }
 	   
-	   @Test(expected = MissileException.class)
-		public void test_PasAssezDePlacePourTirerUnMissile_UneExceptionEstLevee() throws Exception { 
-		   spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 1);
-		   spaceinvaders.tirerUnMissile(new Dimension(7,9),1);
-		}
+
 	    
 	   @Test
 	    public void test_MissileAvanceAutomatiquement_ApresTirDepuisLeVaisseau() {

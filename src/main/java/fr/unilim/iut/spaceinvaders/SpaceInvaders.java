@@ -8,29 +8,37 @@ import fr.unilim.iut.spaceinvaders.utils.MissileException;
 
 public class SpaceInvaders implements Jeu {
 
-	// ATTRIBUTS
 	int longueur;
 	int hauteur;
 	Vaisseau vaisseau;
 	Missile missile;
 
-	// CONSTRUCTEUR
 	public SpaceInvaders(int longueur, int hauteur) {
-		this.longueur = Constante.ESPACEJEU_LONGUEUR;
-		this.hauteur = Constante.ESPACEJEU_HAUTEUR;
+
+		this.longueur = longueur;
+		this.hauteur = hauteur;
 	}
 
-	// GETTERS
-
-	public Vaisseau recupererVaisseau() {
-		return this.vaisseau;
+	private boolean estDansEspaceJeu(int x, int y) {
+		return ((x >= 0) && (x < longueur)) && ((y >= 0) && (y < hauteur));
 	}
 
-	public Missile recupererMissile() {
-		return this.missile;
+	@Override
+	public String toString() {
+		return recupererEspaceJeuDansChaineASCII();
 	}
 
-	// METHODES
+	String recupererEspaceJeuDansChaineASCII() {
+		StringBuilder espaceDeJeu = new StringBuilder();
+		for (int y = 0; y < hauteur; y++) {
+			for (int x = 0; x < longueur; x++) {
+				espaceDeJeu.append(recupererMarqueDeLaPosition(x, y));
+			}
+			espaceDeJeu.append(Constante.MARQUE_FIN_LIGNE);
+		}
+		return espaceDeJeu.toString();
+	}
+
 	private char recupererMarqueDeLaPosition(int x, int y) {
 		char marque;
 		if (this.aUnVaisseauQuiOccupeLaPosition(x, y))
@@ -42,39 +50,41 @@ public class SpaceInvaders implements Jeu {
 		return marque;
 	}
 
-	private boolean aUnMissileQuiOccupeLaPosition(int x, int y) {
-		return this.aUnMissile() && missile.occupeLaPosition(x, y);
-	}
-
-	boolean aUnMissile() {
-		return missile != null;
+	public void initialiserJeu() {
+		Position positionVaisseau = new Position(this.longueur / 2, this.hauteur - 1);
+		Dimension dimensionVaisseau = new Dimension(Constante.VAISSEAU_LONGUEUR, Constante.VAISSEAU_HAUTEUR);
+		positionnerUnNouveauVaisseau(dimensionVaisseau, positionVaisseau, Constante.VAISSEAU_VITESSE);
 	}
 
 	private boolean aUnVaisseauQuiOccupeLaPosition(int x, int y) {
 		return this.aUnVaisseau() && vaisseau.occupeLaPosition(x, y);
 	}
 
+	private boolean aUnMissileQuiOccupeLaPosition(int x, int y) {
+		return this.aUnMissile() && missile.occupeLaPosition(x, y);
+
+	}
+
 	boolean aUnVaisseau() {
 		return vaisseau != null;
 	}
 
-	private boolean estDansEspaceJeu(int x, int y) {
-		return ((x >= 0) && (x < Constante.ESPACEJEU_LONGUEUR)) && ((y >= 0) && (y < Constante.ESPACEJEU_HAUTEUR));
+	boolean aUnMissile() {
+		return missile != null;
 	}
 
 	public void deplacerVaisseauVersLaDroite() {
-		if (vaisseau.abscisseLaPlusADroite() < (Constante.ESPACEJEU_LONGUEUR - 1)) {
-			vaisseau.deplacerHorizontalementVers(Direction.DROITE);
+		if (vaisseau.abscisseLaPlusADroite() < (longueur - 1)) {
+			vaisseau.seDeplacerVersLaDroite();
 			if (!estDansEspaceJeu(vaisseau.abscisseLaPlusADroite(), vaisseau.ordonneeLaPlusHaute())) {
-				vaisseau.positionner(Constante.ESPACEJEU_LONGUEUR - Constante.VAISSEAU_LONGUEUR,
-						vaisseau.ordonneeLaPlusHaute());
+				vaisseau.positionner(longueur - vaisseau.dimension.longueur(), vaisseau.ordonneeLaPlusHaute());
 			}
 		}
 	}
 
 	public void deplacerVaisseauVersLaGauche() {
 		if (0 < vaisseau.abscisseLaPlusAGauche())
-			vaisseau.deplacerHorizontalementVers(Direction.GAUCHE);
+			vaisseau.seDeplacerVersLaGauche();
 		if (!estDansEspaceJeu(vaisseau.abscisseLaPlusAGauche(), vaisseau.ordonneeLaPlusHaute())) {
 			vaisseau.positionner(0, vaisseau.ordonneeLaPlusHaute());
 		}
@@ -84,41 +94,25 @@ public class SpaceInvaders implements Jeu {
 
 		int x = position.abscisse();
 		int y = position.ordonnee();
-
+		vaisseau = new Vaisseau(dimension, position, vitesse);
 		if (!estDansEspaceJeu(x, y))
 			throw new HorsEspaceJeuException("La position du vaisseau est en dehors de l'espace jeu");
 
-		if (!estDansEspaceJeu(x + Constante.VAISSEAU_LONGUEUR - 1, y))
+		if (!estDansEspaceJeu(x + vaisseau.dimension.longueur() - 1, y))
 			throw new DebordementEspaceJeuException(
 					"Le vaisseau déborde de l'espace jeu vers la droite à cause de sa longueur");
-		if (!estDansEspaceJeu(x, y - Constante.VAISSEAU_HAUTEUR + 1))
+		if (!estDansEspaceJeu(x, y - vaisseau.dimension.hauteur() + 1))
 			throw new DebordementEspaceJeuException(
 					"Le vaisseau déborde de l'espace jeu vers le bas à cause de sa hauteur");
 
-		vaisseau = new Vaisseau(dimension, position, Constante.VAISSEAU_VITESSE);
-	}
-
-	/*
-	 * public void initialiserJeu() { Position positionVaisseau = new
-	 * Position(this.longueur / 2, this.hauteur - 1); Dimension dimensionVaisseau =
-	 * new Dimension(Constante.VAISSEAU_LONGUEUR, Constante.VAISSEAU_HAUTEUR);
-	 * positionnerUnNouveauVaisseau(dimensionVaisseau, positionVaisseau,
-	 * Constante.VAISSEAU_VITESSE); }
-	 */
-
-	public void initialiserJeu() {
-		Position positionVaisseau = new Position(this.longueur / 2, this.hauteur - 1);
-		Dimension dimensionVaisseau = new Dimension(Constante.VAISSEAU_LONGUEUR, Constante.VAISSEAU_HAUTEUR);
-		positionnerUnNouveauVaisseau(dimensionVaisseau, positionVaisseau, Constante.VAISSEAU_VITESSE);
 	}
 
 	public void tirerUnMissile(Dimension dimensionMissile, int vitesseMissile) {
-
-		if ((Constante.VAISSEAU_HAUTEUR + dimensionMissile.hauteur()) > Constante.ESPACEJEU_HAUTEUR)
+		if ((vaisseau.hauteur() + dimensionMissile.hauteur()) > this.hauteur)
 			throw new MissileException(
 					"Pas assez de hauteur libre entre le vaisseau et le haut de l'espace jeu pour tirer le missile");
-
 		this.missile = this.vaisseau.tirerUnMissile(dimensionMissile, vitesseMissile);
+
 	}
 
 	public void evoluer(Commande commandeUser) {
@@ -140,27 +134,17 @@ public class SpaceInvaders implements Jeu {
 		return false;
 	}
 
-	// TOSTRING
-
-	@Override
-	public String toString() {
-		return recupererEspaceJeuDansChaineASCII();
+	public Vaisseau recupererVaisseau() {
+		return this.vaisseau;
 	}
 
-	String recupererEspaceJeuDansChaineASCII() {
-		StringBuilder espaceDeJeu = new StringBuilder();
-		for (int y = 0; y < Constante.ESPACEJEU_HAUTEUR; y++) {
-			for (int x = 0; x < Constante.ESPACEJEU_LONGUEUR; x++) {
-				espaceDeJeu.append(recupererMarqueDeLaPosition(x, y));
-			}
-			espaceDeJeu.append(Constante.MARQUE_FIN_LIGNE);
-		}
-		return espaceDeJeu.toString();
+	public Missile recupererMissile() {
+		return this.missile;
 	}
 
 	public void deplacerMissile() {
-		// TODO Auto-generated method stub
-		
+		this.missile.deplacerVerticalementVers(Direction.HAUT_ECRAN);
+
 	}
 
 }

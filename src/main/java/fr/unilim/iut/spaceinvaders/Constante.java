@@ -18,7 +18,7 @@ public class Constante {
 	   public static final char MARQUE_MISSILE = 'M';
 	   
 	   //Constante concernant le missile
-	   public static final char MISSILE_LONGUEUR = 4;
-	   public static final char MISSILE_HAUTEUR = 7; 
+	   public static final char MISSILE_LONGUEUR = 3;
+	   public static final char MISSILE_HAUTEUR = 2; 
 	   public static final char MISSILE_VITESSE = 10;
 }
