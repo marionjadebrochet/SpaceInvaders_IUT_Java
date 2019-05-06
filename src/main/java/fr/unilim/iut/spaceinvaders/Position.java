@@ -21,6 +21,7 @@ public class Position {
 		return this.y;
 	}
 
+	
 	//METHODES
 	public void changerAbscisse(int nouvelleAbscisse) {
 		this.x = nouvelleAbscisse;

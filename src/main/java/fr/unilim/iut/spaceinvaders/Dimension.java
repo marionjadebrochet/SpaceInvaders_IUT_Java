@@ -1,8 +1,8 @@
 package fr.unilim.iut.spaceinvaders;
 
 public class Dimension {
-	
-	//ATTRIBUTS
+
+	// ATTRIBUTS
 	int longueur;
 	int hauteur;
 
@@ -12,7 +12,7 @@ public class Dimension {
 		this.hauteur = hauteur;
 	}
 
-	//GETTERS
+	// GETTERS
 	public int longueur() {
 		return this.longueur;
 	}

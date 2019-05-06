@@ -8,24 +8,22 @@ import fr.unilim.iut.spaceinvaders.utils.MissileException;
 
 public class SpaceInvaders implements Jeu {
 
+	// ATTRIBUTS
 	int longueur;
 	int hauteur;
 	Vaisseau vaisseau;
 	Missile missile;
 
+	// CONSTRUCTEURS
 	public SpaceInvaders(int longueur, int hauteur) {
 
 		this.longueur = longueur;
 		this.hauteur = hauteur;
 	}
 
+	// METHODE
 	private boolean estDansEspaceJeu(int x, int y) {
 		return ((x >= 0) && (x < longueur)) && ((y >= 0) && (y < hauteur));
-	}
-
-	@Override
-	public String toString() {
-		return recupererEspaceJeuDansChaineASCII();
 	}
 
 	public String recupererEspaceJeuDansChaineASCII() {
@@ -50,14 +48,11 @@ public class SpaceInvaders implements Jeu {
 		return marque;
 	}
 
-
-	 public void initialiserJeu() {
-	 Position positionVaisseau = new Position(this.longueur/2,this.hauteur-1);
-	 Dimension dimensionVaisseau = new Dimension(Constante.VAISSEAU_LONGUEUR,
-			 Constante.VAISSEAU_HAUTEUR); positionnerUnNouveauVaisseau(dimensionVaisseau,
-	 positionVaisseau, Constante.VAISSEAU_VITESSE); 
-	 }
-
+	public void initialiserJeu() {
+		Position positionVaisseau = new Position(this.longueur / 2, this.hauteur - 1);
+		Dimension dimensionVaisseau = new Dimension(Constante.VAISSEAU_LONGUEUR, Constante.VAISSEAU_HAUTEUR);
+		positionnerUnNouveauVaisseau(dimensionVaisseau, positionVaisseau, Constante.VAISSEAU_VITESSE);
+	}
 
 	private boolean aUnVaisseauQuiOccupeLaPosition(int x, int y) {
 		return this.aUnVaisseau() && vaisseau.occupeLaPosition(x, y);
@@ -80,8 +75,7 @@ public class SpaceInvaders implements Jeu {
 		if (vaisseau.abscisseLaPlusADroite() < (longueur - 1)) {
 			vaisseau.seDeplacerVersLaDroite();
 			if (!estDansEspaceJeu(vaisseau.abscisseLaPlusADroite(), vaisseau.ordonneeLaPlusHaute())) {
-				vaisseau.positionner(longueur - vaisseau.dimension.longueur(),
-						vaisseau.ordonneeLaPlusHaute());
+				vaisseau.positionner(longueur - vaisseau.dimension.longueur(), vaisseau.ordonneeLaPlusHaute());
 			}
 		}
 	}
@@ -98,7 +92,7 @@ public class SpaceInvaders implements Jeu {
 
 		int x = position.abscisse();
 		int y = position.ordonnee();
-		vaisseau = new Vaisseau(dimension, position,vitesse);
+		vaisseau = new Vaisseau(dimension, position, vitesse);
 		if (!estDansEspaceJeu(x, y))
 			throw new HorsEspaceJeuException("La position du vaisseau est en dehors de l'espace jeu");
 
@@ -113,14 +107,11 @@ public class SpaceInvaders implements Jeu {
 
 	public void tirerUnMissile(Dimension dimensionMissile, int vitesseMissile) {
 		this.missile = this.vaisseau.tirerUnMissile(dimensionMissile, vitesseMissile);
-		if ((vaisseau.hauteur() + dimensionMissile.hauteur() ) > hauteur) 
+		if ((vaisseau.hauteur() + dimensionMissile.hauteur()) > hauteur)
 			throw new MissileException(
 					"Pas assez de hauteur libre entre le vaisseau et le haut de l'espace jeu pour tirer le missile");
 
-
 	}
-	
-	
 
 	public void evoluer(Commande commandeUser) {
 
@@ -137,7 +128,7 @@ public class SpaceInvaders implements Jeu {
 					Constante.MISSILE_VITESSE);
 
 		}
-		if (this.aUnMissile()){
+		if (this.aUnMissile()) {
 			deplacerMissile();
 		}
 
@@ -150,17 +141,23 @@ public class SpaceInvaders implements Jeu {
 	public Vaisseau recupererVaisseau() {
 		return this.vaisseau;
 	}
+
 	public Missile recupererMissile() {
 		return this.missile;
 	}
 
 	public void deplacerMissile() {
 		this.missile.deplacerVerticalementVers(Direction.HAUT_ECRAN);
-		if(this.missile.ordonneeLaPlusHaute()<=0) {
-			this.missile=null;
+		if (this.missile.ordonneeLaPlusHaute() <= 0) {
+			this.missile = null;
 		}
-		
+
 	}
 
+	// TO STRING
+	@Override
+	public String toString() {
+		return recupererEspaceJeuDansChaineASCII();
+	}
 
 }

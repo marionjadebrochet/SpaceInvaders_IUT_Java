@@ -5,6 +5,7 @@ import fr.unilim.iut.spaceinvaders.moteurjeu.MoteurGraphique;
 
 public class Main {
 
+	// METHODE MAIN
 	public static void main(String[] args) throws InterruptedException {
 
 		SpaceInvaders jeu = new SpaceInvaders(Constante.ESPACEJEU_LONGUEUR, Constante.ESPACEJEU_HAUTEUR);
