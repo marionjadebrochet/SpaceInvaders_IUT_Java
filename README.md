@@ -10,4 +10,4 @@
 
 # Voici mon nuage de mots : 
 
-<img src="images/FCT4.jpg">
+<img src="images/FCT4.JPG">
