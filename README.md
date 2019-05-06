@@ -9,3 +9,5 @@
 <img src="images/Fct4.gif">
 
 # Voici mon nuage de mots : 
+
+<img src="images/FCT4.jpg">
