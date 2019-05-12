@@ -20,7 +20,7 @@ parfaitement. J'ai donc fini la fonctionnalité 4.
 # Semaine du lundi 6 mai au vendredi 10 mai 2019
 
 Cette semaine j'ai commencé la fonctionnalité 5, j'ai donc créé mon envahisseur. C'était assez simple, 
-fallait reprendre la fonctionnalité "créer vaisseau" mais cette fois pour créer un envahisseur. J'ai 
+il fallait reprendre la fonctionnalité "créer un vaisseau" mais cette fois pour créer un envahisseur. J'ai 
 refais également des tests. De plus, j'ai dû créer une méthode qui permet de déplacer automatiquement 
 l'envahisseur et aussi vérifier qu'il ne sorte pas de l'espace de jeu. 
 Ma fonctionnalité 5 est finie.
