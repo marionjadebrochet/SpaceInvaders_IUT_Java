@@ -9,7 +9,7 @@ public class Constante {
 	// Constante concernant le vaisseau
 	public static final int VAISSEAU_LONGUEUR = 30;
 	public static final int VAISSEAU_HAUTEUR = 20;
-	public static final int VAISSEAU_VITESSE = 5;
+	public static final int VAISSEAU_VITESSE = 20;
 
 	// Constante concernant le marquage
 	public static final char MARQUE_FIN_LIGNE = '\n';
@@ -21,11 +21,11 @@ public class Constante {
 	// Constante concernant le missile
 	public static final char MISSILE_LONGUEUR = 3;
 	public static final char MISSILE_HAUTEUR = 7;
-	public static final char MISSILE_VITESSE = 10;
+	public static final char MISSILE_VITESSE = 50;
 	
 	//Constante concernant le vaisseau
 	public static final int ENVAHISSEUR_LONGUEUR = 30;
 	public static final int ENVAHISSEUR_HAUTEUR = 20;
-	public static final int ENVAHISSEUR_VITESSE = 5;
+	public static final int ENVAHISSEUR_VITESSE = 10;
 
 }

@@ -16,7 +16,5 @@ public class Envahisseur extends Sprite {
 		return this.dimension.longueur();
 	}
 
-	// METHODES
-	
 
 }

@@ -14,6 +14,7 @@ public class SpaceInvaders implements Jeu {
 	Vaisseau vaisseau;
 	Missile missile;
 	Envahisseur envahisseur;
+	boolean arrivéAuBordDeGauche = false;
 
 	// CONSTRUCTEURS
 	public SpaceInvaders(int longueur, int hauteur) {
@@ -56,6 +57,10 @@ public class SpaceInvaders implements Jeu {
 		Position positionVaisseau = new Position(this.longueur / 2, this.hauteur - 1);
 		Dimension dimensionVaisseau = new Dimension(Constante.VAISSEAU_LONGUEUR, Constante.VAISSEAU_HAUTEUR);
 		positionnerUnNouveauVaisseau(dimensionVaisseau, positionVaisseau, Constante.VAISSEAU_VITESSE);
+		Position positionEnvahisseur = new Position(this.longueur / 2, 20);
+		Dimension dimensionEnvahisseur = new Dimension(Constante.ENVAHISSEUR_LONGUEUR, Constante.ENVAHISSEUR_HAUTEUR);
+		positionnerUnNouveauEnvahisseur(dimensionEnvahisseur, positionEnvahisseur, Constante.ENVAHISSEUR_VITESSE);
+
 	}
 
 	public void evoluer(Commande commandeUser) {
@@ -76,6 +81,7 @@ public class SpaceInvaders implements Jeu {
 		if (this.aUnMissile()) {
 			deplacerMissile();
 		}
+		deplacerEnvahisseur();
 
 	}
 
@@ -163,7 +169,6 @@ public class SpaceInvaders implements Jeu {
 	// METHODE CONCERNANT UNIQUEMENT L'ENVAHISSEUR
 	private boolean aUnEnvahisseurQuiOccupeLaPosition(int x, int y) {
 		return this.aUnEnvahisseur() && envahisseur.occupeLaPosition(x, y);
-
 	}
 
 	boolean aUnEnvahisseur() {
@@ -180,15 +185,50 @@ public class SpaceInvaders implements Jeu {
 		int y = position.ordonnee();
 		envahisseur = new Envahisseur(dimension, position, vitesse);
 		if (!estDansEspaceJeu(x, y))
-			throw new HorsEspaceJeuException("La position du vaisseau est en dehors de l'espace jeu");
+			throw new HorsEspaceJeuException("La position du l'envahisseur est en dehors de l'espace jeu");
 
 		if (!estDansEspaceJeu(x + envahisseur.dimension.longueur() - 1, y))
 			throw new DebordementEspaceJeuException(
-					"Le vaisseau déborde de l'espace jeu vers la droite à cause de sa longueur");
+					"L'envahisseur déborde de l'espace jeu vers la droite à cause de sa longueur");
 		if (!estDansEspaceJeu(x, y - envahisseur.dimension.hauteur() + 1))
 			throw new DebordementEspaceJeuException(
-					"Le vaisseau déborde de l'espace jeu vers le bas à cause de sa hauteur");
+					"L'envahisseur déborde de l'espace jeu vers le bas à cause de sa hauteur");
+	}
 
+	public void deplacerEnvahisseur() {
+		if (this.aUnEnvahisseur()) {
+			if (arrivéAuBordDeGauche) {
+				if (envahisseur.abscisseLaPlusAGauche() <= 0) {
+					arrivéAuBordDeGauche = false;
+				} else {
+					deplacerEnvahisseurVersLaGauche();
+				}
+			}
+			if (!arrivéAuBordDeGauche) {
+				if (envahisseur.abscisseLaPlusADroite() >= Constante.ESPACEJEU_LONGUEUR - 1) {
+					arrivéAuBordDeGauche = true;
+				} else {
+					deplacerEnvahisseurVersLaDroite();
+				}
+			}
+		}
+	}
+
+	public void deplacerEnvahisseurVersLaDroite() {
+		if (envahisseur.abscisseLaPlusADroite() < (longueur - 1)) {
+			envahisseur.seDeplacerVersLaDroite();
+			if (!estDansEspaceJeu(envahisseur.abscisseLaPlusADroite(), envahisseur.ordonneeLaPlusHaute())) {
+				envahisseur.positionner(longueur - envahisseur.dimension.longueur(), envahisseur.ordonneeLaPlusHaute());
+			}
+		}
+	}
+
+	public void deplacerEnvahisseurVersLaGauche() {
+		if (0 < envahisseur.abscisseLaPlusAGauche())
+			envahisseur.seDeplacerVersLaGauche();
+		if (!estDansEspaceJeu(envahisseur.abscisseLaPlusAGauche(), envahisseur.ordonneeLaPlusHaute())) {
+			envahisseur.positionner(0, envahisseur.ordonneeLaPlusHaute());
+		}
 	}
 
 	// TO STRING
