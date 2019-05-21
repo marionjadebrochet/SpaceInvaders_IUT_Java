@@ -11,6 +11,8 @@ public class Commande {
 	/**
 	 * boolean representant la commande de l'utilisateur
 	 */
+	
+	//ATTRIBUTS
 	public boolean gauche;
 	public boolean droite;
 	public boolean haut;
@@ -18,6 +20,7 @@ public class Commande {
 	public boolean tir;
 	
 
+	//METHODES
 	public Commande()
 	{
 		

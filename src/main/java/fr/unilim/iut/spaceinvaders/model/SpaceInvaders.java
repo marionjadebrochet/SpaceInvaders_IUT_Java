@@ -64,25 +64,33 @@ public class SpaceInvaders implements Jeu {
 	}
 
 	public void evoluer(Commande commandeUser) {
+		if (null != commandeUser) {
+			if (commandeUser.gauche) {
+				deplacerVaisseauVersLaGauche();
+			}
 
-		if (commandeUser.gauche) {
-			deplacerVaisseauVersLaGauche();
+			if (commandeUser.droite) {
+				deplacerVaisseauVersLaDroite();
+			}
+
+			if (commandeUser.tir && !this.aUnMissile()) {
+				tirerUnMissile(new Dimension(Constante.MISSILE_LONGUEUR, Constante.MISSILE_HAUTEUR),
+						Constante.MISSILE_VITESSE);
+
+			}
 		}
 
-		if (commandeUser.droite) {
-			deplacerVaisseauVersLaDroite();
-		}
-
-		if (commandeUser.tir && !this.aUnMissile()) {
-			tirerUnMissile(new Dimension(Constante.MISSILE_LONGUEUR, Constante.MISSILE_HAUTEUR),
-					Constante.MISSILE_VITESSE);
-
-		}
 		if (this.aUnMissile()) {
 			deplacerMissile();
 		}
 		deplacerEnvahisseur();
 
+		if (this.aUnMissile() && this.aUnEnvahisseur() && Collision.detecterCollision(this.envahisseur, this.missile)) {
+			this.envahisseur = null;
+		}
+		if (this.envahisseur == null) {
+			this.missile = null;
+		}
 	}
 
 	public boolean etreFini() {

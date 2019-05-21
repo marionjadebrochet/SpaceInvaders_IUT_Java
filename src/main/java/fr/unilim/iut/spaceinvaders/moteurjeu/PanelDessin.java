@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 public class PanelDessin extends JPanel {
 
+	//ATTRIBUTS
 	/**
 	 * la clase chargee de Dessiner
 	 */
@@ -28,6 +29,7 @@ public class PanelDessin extends JPanel {
 	 */
 	private int width, height;
 
+	//CONSTRUCTEURS
 	/**
 	 * constructeur Il construit les images pour doublebuffering ainsi que le
 	 * Panel associe. Les images stockent le dessin et on demande au panel la
@@ -51,6 +53,8 @@ public class PanelDessin extends JPanel {
 		this.imageEnCours = new BufferedImage(width, height,
 				BufferedImage.TYPE_INT_RGB);
 	}
+	
+	//METHODES
 
 	/**
 	 * demande de mettre a jour le rendu de l'image sur le Panel. Creer une

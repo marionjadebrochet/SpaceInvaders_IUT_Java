@@ -1,6 +1,6 @@
 # Space Invaders - Rapport à chaque scéance
 
-# Semaine du lundi 6 mai au vendredi 10 mai 2019
+# Semaine du lundi 29 juin au vendredi 3 mai 2019
 
 Pendant les vacances j'ai avancée jusqu'à la moitié de la fonctionnalité 4, mais suite à des problèmes 
 au niveau des tests, j'ai dû attendre la rentrée pour réparer le problème. Donc à la dernière scéance 
@@ -34,5 +34,29 @@ Ma fonctionnalité 5 est finie.
 
 <img src="images/FCT5.JPG">
 
-Maintenant je commence à refléchir à la fonctionnalité 6, la collision de Sprites. 
+
+-------------------------------------------------------------------------------------------------------------
+
+# Semaine du lundi 13 mai au vendredi 17 mai 2019
+
+J'ai commencé à réfléchir à la fonctionnalité 6, la collision. 
 J'ai créé une classe Collision et une méthode detecterCollision. 
+J'ai fait des tests pour mes dimensions dans Test Collision, et un dans 
+Test SpaceInvaders pour savoir si la collision à bien lieu et la disparition aussi. 
+J'ai fait la méthode detecterCollision, tout fonctionne 
+(il y a certains cas particuliers que je n'ai pas traité). 
+
+# Voici mon diagramme de classe : 
+
+<img src="images/Fct6.png">
+
+# Voici mon nuage de mots : 
+
+<img src="images/FCT6.png">
+
+Je vais donc commencer la fonctionnalité 7.
+
+-------------------------------------------------------------------------------------------------------------
+
+# Semaine du lundi 20 mai au vendredi 24 mai 2019
+
