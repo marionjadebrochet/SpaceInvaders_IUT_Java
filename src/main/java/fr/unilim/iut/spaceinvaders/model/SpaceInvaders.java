@@ -79,7 +79,6 @@ public class SpaceInvaders implements Jeu {
 
 			}
 		}
-
 		if (this.aUnMissile()) {
 			deplacerMissile();
 		}
@@ -91,7 +90,11 @@ public class SpaceInvaders implements Jeu {
 		if (this.envahisseur == null) {
 			this.missile = null;
 		}
+		if (this.envahisseur == null && this.missile == null) {
+			this.vaisseau = null;
+		}
 	}
+
 
 	public boolean etreFini() {
 		return false;

@@ -30,7 +30,17 @@ public class DessinSpaceInvaders implements DessinJeu {
 			Envahisseur envahisseur = this.jeu.recupererEnvahisseur();
 			this.dessinerUnEnvahisseur(envahisseur, im);
 		}
+		if (!this.jeu.aUnVaisseau()) {
+			this.dessinerLeMessageDeFin(im, "Félicitation vous avez gagnez !!!", Color.black);
+}
 	}
+	
+	public void dessinerLeMessageDeFin(BufferedImage im, String messagefin, Color c) {
+		Graphics2D crayon = (Graphics2D) im.getGraphics();
+
+		crayon.setColor(c);
+		crayon.drawString(messagefin, Constante.ESPACEJEU_LONGUEUR / 2, Constante.ESPACEJEU_HAUTEUR / 2);
+}
 
 	private void dessinerUnVaisseau(Vaisseau vaisseau, BufferedImage imVaisseau) {
 		Graphics2D crayon = (Graphics2D) imVaisseau.getGraphics();

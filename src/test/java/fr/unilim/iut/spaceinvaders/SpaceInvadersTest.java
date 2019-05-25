@@ -490,7 +490,7 @@ public class SpaceInvadersTest {
 }
 		   
 		   @Test
-		   public void test_MissileEnCollisionAvecUnEnvahisseur() {
+		   public void test_MissileEnCollisionAvecUnEnvahisseurEtFinDePartie() {
 		       
 		       spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(4,2),new Position(7,1), 1);
 		       spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
@@ -510,8 +510,8 @@ public class SpaceInvadersTest {
 		       "...............\n" + 
 		       "...............\n" + 
 		       "...............\n" + 
-		       ".....VVVVVVV...\n" +
-		       ".....VVVVVVV...\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+		       "...............\n" +
+		       "...............\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
 		   }
 
 }
