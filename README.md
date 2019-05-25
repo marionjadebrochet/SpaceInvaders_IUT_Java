@@ -68,4 +68,6 @@ disparaisse à la fin du jeu. J'ai également afficher un message quand le joueu
 
 # Voici mon nuage de mots : 
 
-<img src="images/FCT7.png">
+<img src="images/FCT7.PNG">
+
+
