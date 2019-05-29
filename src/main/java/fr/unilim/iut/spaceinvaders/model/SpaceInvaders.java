@@ -66,6 +66,8 @@ public class SpaceInvaders implements Jeu {
 
 	}
 
+	
+	
 	public void evoluer(Commande commandeUser) {
 		if (null != commandeUser) {
 			if (commandeUser.gauche) {

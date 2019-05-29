@@ -35,6 +35,7 @@ public class DessinSpaceInvaders implements DessinJeu {
 }
 	}
 	
+	
 	public void dessinerLeMessageDeFin(BufferedImage im, String messagefin, Color c) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 
