@@ -30,8 +30,8 @@ public class DessinSpaceInvaders implements DessinJeu {
 			Envahisseur envahisseur = this.jeu.recupererEnvahisseur();
 			this.dessinerUnEnvahisseur(envahisseur, im);
 		}
-		if (!this.jeu.aUnVaisseau()) {
-			this.dessinerLeMessageDeFin(im, "Félicitation vous avez gagnez !!!", Color.black);
+		if (jeu.etreFini()) {
+			this.dessinerLeMessageDeFin(im, "Félicitation vous avez gagné !!!", Color.black);
 }
 	}
 	

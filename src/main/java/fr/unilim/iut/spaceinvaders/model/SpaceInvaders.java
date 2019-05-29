@@ -15,12 +15,14 @@ public class SpaceInvaders implements Jeu {
 	Missile missile;
 	Envahisseur envahisseur;
 	boolean arrivéAuBordDeGauche = false;
+	boolean fini;
 
 	// CONSTRUCTEURS
 	public SpaceInvaders(int longueur, int hauteur) {
 
 		this.longueur = longueur;
 		this.hauteur = hauteur;
+		this.fini = false;
 	}
 
 	// METHODES
@@ -54,6 +56,7 @@ public class SpaceInvaders implements Jeu {
 	}
 
 	public void initialiserJeu() {
+		this.fini=false;
 		Position positionVaisseau = new Position(this.longueur / 2, this.hauteur - 1);
 		Dimension dimensionVaisseau = new Dimension(Constante.VAISSEAU_LONGUEUR, Constante.VAISSEAU_HAUTEUR);
 		positionnerUnNouveauVaisseau(dimensionVaisseau, positionVaisseau, Constante.VAISSEAU_VITESSE);
@@ -94,14 +97,15 @@ public class SpaceInvaders implements Jeu {
 		}
 		//Et si l'envahisseur et le missile sont plus là, alors le vaisseau disparait pour déclencher la fin de partie.
 		if (this.envahisseur == null && this.missile == null) {
-			this.vaisseau = null;
+			this.vaisseau=null;
+			this.fini = true;
 		}
 	}
 	
 
 
 	public boolean etreFini() {
-		return false;
+		return this.fini;
 	}
 
 	// METHODE CONCERNANT UNIQUEMENT LE VAISSEAU
