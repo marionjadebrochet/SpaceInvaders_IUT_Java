@@ -60,7 +60,7 @@ J'ai fait la méthode detecterCollision, tout fonctionne
 # Semaine du lundi 20 mai au vendredi 24 mai 2019
 
 Je vais donc commencer la fonctionnalité 7. Il suffisait de rajouter une condition pour que le vaisseau
-disparaisse à la fin du jeu. J'ai également afficher un message quand le joueur gagne.
+disparaisse à la fin du jeu.
 
 # Voici mon diagramme de classe : 
 
@@ -71,3 +71,17 @@ disparaisse à la fin du jeu. J'ai également afficher un message quand le joueu
 <img src="images/FCT7.PNG">
 
 
+-------------------------------------------------------------------------------------------------------------
+
+# Semaine du lundi 20 mai au vendredi 24 mai 2019
+
+ J'ai fais afficher un message quand le joueur gagne.
+ Puis j'ai rajouté des tests pour la collision.
+ 
+# Voici mon diagramme de classe : 
+
+<img src="images/Fct7.png">
+
+# Voici mon nuage de mots : 
+
+<img src="images/FCT7.PNG">
