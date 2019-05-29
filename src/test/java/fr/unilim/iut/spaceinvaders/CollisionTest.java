@@ -22,6 +22,7 @@ public class CollisionTest {
  	   
         assertTrue((collision.detecterCollision(sprite1, sprite2)));
     }
+	
 
 	@SuppressWarnings("static-access")
 	@Test
