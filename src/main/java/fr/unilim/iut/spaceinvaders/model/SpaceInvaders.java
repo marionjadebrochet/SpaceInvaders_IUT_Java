@@ -83,17 +83,21 @@ public class SpaceInvaders implements Jeu {
 			deplacerMissile();
 		}
 		deplacerEnvahisseur();
-
+		
+		//Si collision, envahisseur disparait
 		if (this.aUnMissile() && this.aUnEnvahisseur() && Collision.detecterCollision(this.envahisseur, this.missile)) {
 			this.envahisseur = null;
 		}
+		//Et si envahisseur disparait, missile aussi.
 		if (this.envahisseur == null) {
 			this.missile = null;
 		}
+		//Et si l'envahisseur et le missile sont plus là, alors le vaisseau disparait pour déclencher la fin de partie.
 		if (this.envahisseur == null && this.missile == null) {
 			this.vaisseau = null;
 		}
 	}
+	
 
 
 	public boolean etreFini() {

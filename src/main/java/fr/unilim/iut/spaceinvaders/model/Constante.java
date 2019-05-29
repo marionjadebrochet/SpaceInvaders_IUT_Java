@@ -9,7 +9,7 @@ public class Constante {
 	// Constante concernant le vaisseau
 	public static final int VAISSEAU_LONGUEUR = 30;
 	public static final int VAISSEAU_HAUTEUR = 20;
-	public static final int VAISSEAU_VITESSE = 10;
+	public static final int VAISSEAU_VITESSE = 20;
 
 	// Constante concernant le marquage
 	public static final char MARQUE_FIN_LIGNE = '\n';
