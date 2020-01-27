@@ -1,5 +1,7 @@
 # Space Invaders - Rapport à chaque scéance
 
+Travail de 1ère année à l'IUT Informatique en JAVA. Réalisation d'un Space Invaders.
+
 # Semaine du lundi 29 juin au vendredi 3 mai 2019
 
 Pendant les vacances j'ai avancée jusqu'à la moitié de la fonctionnalité 4, mais suite à des problèmes 
